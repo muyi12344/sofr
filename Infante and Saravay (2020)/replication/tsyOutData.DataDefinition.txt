@@ -1,0 +1,5 @@
+TbillsOut: the dollar amount outstanding of all U.S. Treasury bills. 
+
+ShTbillsOut: the dollar amount outstanding of U.S. Treasury bills with maturity less than one month. 
+
+USTNotesOut: the dollar amount outstanding of all U.S. Treasury notes and bonds.

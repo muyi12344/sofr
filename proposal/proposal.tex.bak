@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+
+	\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{mathtools}
+\usepackage{placeins}
+\usepackage{lscape}
+\usepackage{geometry}
+\usepackage{dcolumn}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{nicematrix}
+\usepackage{calc}
+\usepackage{qtree}
+\usepackage{tikz}
+\usepackage{setspace}
+\usepackage[utf8]{inputenc}
+
+	
+	\usepackage{fullpage} %sets 1-in margins
+	\newcommand{\tab}{\hspace*{2em}} %creates a \tab command, gives you horizontal space
+
+	\setlength\parindent{0em} %sets indent
+	 %\pagestyle{empty} %turns off page numbering on all pages
+
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother
+
+\title{SOFR so good? New Benchmark Rate and Crowding-Out Effect}
+\author{Qian Wu \\
+%EndAName
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+
+\section{Introduction}
+\tab For a long time,  LIBOR has been the reference interest rate used worldwide in a large variety of financial assets including business loans,  consumer loans,  and derivatives.  Due to the LIBOR manipulation scandal and a shrinking interbank debt market,  LIBOR is being retired.  In the US,  the Alternative Reference Rate Committee (ARRC) recommends SOFR as the alternative to the USD LIBOR.  \\
+\tab These two benchmark rates are significantly different in some sense.  LIBOR is the average interest rate that leading banks borrow from each other.  It reflects banks' borrowing cost,  thus includes banks credit premium.  SOFR is a broader measure of the cost of borrowing cash overnight collateralized by Treasury securities.  It's based on real transactions in the overnight Treasury repurchase market so it's more risk-free.  The nature of the transactions underlying SOFR makes it more sensitive to the Treasury security issuing.  It has been found that higher outstanding debt is correlated with a higher SOFR,  while this positive connection does not exist for LIBOR. \footnote{See Klingler and Syrstad (2021).} Thus, SOFR can generates extra crowding-out effect if firms rely on business loans to finance projects.  This study is designed to investigate whether the transition in the benchmark interest rate changes the size of the government debt crowding-out effect.
+ 
+ \section{Literature Review}
+\tab There has been limited literature studying the implications of switching benchmark rate since the transition from LIBOR to SOFR is still ongoing. \footnote{The publication for one-week and two-month USD LIBOR will cease on December 31, 2021; The publication for the USD LIBOR with other terms will cease on June 30, 2023.} Klingler and Syrstad (2021) empirically examine SOFR, SONIA, and ESTR. They identify three drivers of the fluctuation in these alternative benchmarks: regulatory constraints, government debt, and central bank reserves.  In their study,  they found that SOFR responds more to the change of Treasury securities outstanding than LIBOR,  providing a preliminary empirical foundation for future study about the extra crowding out effect from the benchmark interest rate transition  Jermann (2019) focuses on another discrepancy between LIBOR and SOFR: the hedging function.  LIBOR reflects banks' borrowing costs,  so it can partially hedge from the bank funding cost shocks,  while SOFR does not have this function.  Therefore, in a SOFR economy banks default more and firms reduce investment more.  
+
+
+\section{Methedology}
+\tab The main body of this project consists of two parts: empirical evidence and model.  I tackle the research questions in two stages.  First,  using aggregate-level time-series data,  I show that compared with LIBOR,  SOFR responds more positively to an increase in government debt outstanding.  Table 1 shows the results when regressing SOFR- and LIBOR- spreads over FFR with respect to the government debt.  Consistent with intuition,  SOFR increases sharply to the rising government debt,  while LIBOR has no significant response.
+\begin{center}
+  {\scriptsize%
+\begin{tabular}{@{\extracolsep{1pt}}lD{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} } 
+\multicolumn{5}{c}{Table 1: Response of SOFR and LIBOR to Government Debt Issuance}\\[.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{4}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-5} 
+\\[-1.8ex] & \multicolumn{2}{c}{SOFR} & \multicolumn{2}{c}{LIBOR} \\ 
+\\[-1.8ex] & \multicolumn{1}{c}{(1)} & \multicolumn{1}{c}{(2)} & \multicolumn{1}{c}{(3)} & \multicolumn{1}{c}{(4)}\\ 
+\hline \\[-1.8ex] 
+Government debt & 614.474^{***} & 609.553^{***} & -36.676 & -34.162 \\ 
+  & (166.458) & (169.146) & (23.319) & (22.558) \\ 
+  Lagged SOFR &  & 0.173^{**} &  &  \\ 
+  &  & (0.078) &  &  \\ 
+  Lagged LIBOR &  &  &  & -0.163^{**} \\ 
+  &  &  &  & (0.066) \\ 
+  Constant & -0.276^{***} & -0.242^{***} & 0.008 & 0.008 \\ 
+  & (0.088) & (0.068) & (0.010) & (0.011) \\ 
+ \hline \\[-1.8ex] 
+Adjusted $R^2$ & 0.0405 & 0.0696 & 0.0026 & 0.0283 \\ 
+Observations & 1135 & 1134 & 1100 & 1082 \\ 
+ \hline \\[-1.8ex] 
+\hline 
+ \multicolumn{5}{l}{Note: $^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+ \multicolumn{5}{l}{\hspace{7mm}All variables are in diff log format.}\\
+\multicolumn{5}{l}{\hspace{7mm}Newey-West Standard Error in parenthesis.}\\
+\multicolumn{5}{l}{\hspace{7mm}The sample includes daily data from August 25, 2014 to December 31, 2019.}
+\end{tabular} 
+}%
+\end{center}
+ 
+
+\tab In the second stage,  a model will be built to quantify the size of the extra crowding-out effect induced by having SOFR as the new benchmark rate.  The economy is composed of a household sector,  a firm sector,  and a government sector.  Firms rely on floating-rate business loans to finance for production.  The interest rate for business loans is modeled as SOFR or LIBOR plus some premium.  Households earn income from supplying labor and capital,  they are the source of the business loan funds.  The government runs both a fiscal authority and a monetary authority.  The fiscal authority issues Treasury securities and the monetary authority sets interest rate on Treasury securities.  I consider two economies with LIBOR and SOFR as the benchmark rate for the business loans,  respectively.  LIBOR is assumed to be irrelevant with the scale of government debt while SOFR is assumed to be positively connected to the outstanding debt.  Using this model,  it can be quantified how the crowding
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,11 @@
+Avg_USText: the cross-sectional average of the all-contract collateral multiplier across all dealers in our sample.
+
+AvgUS_USText: the cross-sectional average of the all-contract collateral multiplier across the U.S. dealers in our sample.
+
+AvgRoW_USText: the cross-sectional average of the all-contract collateral multiplier across the non-U.S. dealers in our sample.
+
+Avg_USTextRP: the cross-sectional average of the repo collateral multiplier across all dealers in our sample.
+
+AvgUS_USTextRP: the cross-sectional average of the repo collateral multiplier across the U.S. dealers in our sample.
+
+AvgRoW_USTextRP: the cross-sectional average of the repo collateral multiplier across the non-U.S. dealers in our sample.

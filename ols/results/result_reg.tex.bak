@@ -1,0 +1,20 @@
+\documentclass[]{article}
+\setlength{\pdfpagewidth}{8.5in} \setlength{\pdfpageheight}{11in}
+\begin{document}
+\begin{tabular}{lcccc} \hline
+ & (1) & (2) & (3) & (4) \\
+VARIABLES & diff\_SOFR & diff\_SOFR & diff\_LIBOR & diff\_LIBOR \\ \hline
+ &  &  &  &  \\
+difflog\_debt & 614.5*** & 600.0*** & -36.68 & -34.41 \\
+ & (166.2) & (161.5) & (26.76) & (25.72) \\
+difflog\_volume &  & 9.744*** &  & -1.393* \\
+ &  & (2.879) &  & (0.720) \\
+Constant & -0.276*** & -0.248*** & 0.00787 & 0.00347 \\
+ & (0.0884) & (0.0874) & (0.0174) & (0.0180) \\
+ &  &  &  &  \\
+Observations & 1,135 & 1,135 & 1,100 & 1,100 \\
+ R-squared & 0.041 & 0.051 & 0.003 & 0.008 \\ \hline
+\multicolumn{5}{c}{ Robust standard errors in parentheses} \\
+\multicolumn{5}{c}{ *** p$<$0.01, ** p$<$0.05, * p$<$0.1} \\
+\end{tabular}
+\end{document}

@@ -1,0 +1,14 @@
+		(1)	(2)	(3)	(4)
+VARIABLES	LABELS	diff_SOFR	diff_SOFR	diff_LIBOR	diff_LIBOR
+					
+change_Public	difflog_debt	614.5***	600.0***	-36.68	-34.41
+		(166.2)	(161.5)	(26.76)	(25.72)
+difflog_Volume	difflog_volume		9.744***		-1.393*
+			(2.879)		(0.720)
+Constant	Constant	-0.276***	-0.248***	0.00787	0.00347
+		(0.0884)	(0.0874)	(0.0174)	(0.0180)
+					
+Observations		1,135	1,135	1,100	1,100
+R-squared		0.041	0.051	0.003	0.008
+Robust standard errors in parentheses					
+*** p<0.01, ** p<0.05, * p<0.1					
