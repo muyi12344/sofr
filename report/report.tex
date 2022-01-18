@@ -33,13 +33,15 @@
 \makeatother
 
 \title{SOFR and Crowding-Out Effect}
-\date{}
-\author{}
+\date{\today}
+\author{Qian Wu}
 
 \begin{document}
 
+\maketitle
 
-\section{Response of SOFR and LIBOR to Gov't Borrowing}
+\section{Empirical Findings}
+\subsection{Response of SOFR and LIBOR to Gov't Borrowing}
 \begin{center}
 \footnotesize
 \begin{tabular}{@{\extracolsep{5pt}}lD{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} } 
@@ -95,15 +97,15 @@ Residual Std. Error & \multicolumn{1}{c}{2.826 (df = 1132)} & \multicolumn{1}{c}
 
 
 \newpage
-\section{The Scarcity Value of Treasury Collateral}
-\subsection{Segments of Markets Underlying SOFR}
+\subsection{The Scarcity Value of Treasury Collateral}
+\subsubsection{Segments of Markets Underlying SOFR}
 The transactions underlying SOFR comprises two segments: bilateral repo and tri-party repo. In a bilateral repo, the settlement is handled directly by the trading parties rather than by a third-party clearing bank as in a triparty repo. Tri-party transactions are secured by General Collateral (GC) pools of accepted Treasury securities, any of which can be delivered as collateral by the cash borrower.  Unlike tri-pary transaction,  bilateral transactions feature Specific Collateral (SC) as lenders and borrowers can designate specific securities as collateral.  Therefore,  the incentive for lenders entering the bilateral repo market can be to seek a specific security.  A so-called collateral scarcity premium arises in bilateral transactions. \footnote{Infante and Saravay (2020) and D’Amico et al.  (2018) provide empirical evidence for treasury collateral scarcity.} \\
 \begin{center}
 \includegraphics[scale=.5]{fig1.png}
 \end{center}
 
 
-\subsection{Treasuries Outstanding and Scarcity Value}
+\subsubsection{Treasuries Outstanding and Scarcity Value}
 Intuitively,  when the volume of outstanding Treasuries is larger,  the Treasuries as collateral become less scarcity,  so the rate spread between bilateral repo transactions and tri-party repo transactions increases.  
 
 \begin{center}
@@ -135,6 +137,52 @@ Residual Std. Error & \multicolumn{1}{c}{6.591 (df = 897)} & \multicolumn{1}{c}{
 \end{center}
 
 
+\newpage
+\subsection{Local Projection}
+To show that the extra response in SOFR with respect to government borrowing is significantly large and persistent,
+I conduct time series analysis using Local Projection with monthly data covering the period
+between 2014/08 and 2019/12. In the first stage, I identify the government borrowing shock
+using the following strategy:
+\begin{align*}
+  b_t=\alpha_0+\alpha_1t+\alpha_2t^2+A(L)X_{t-1}+\epsilon_t^b,
+\end{align*}
+where $b_t$ denotes log(govt debt); $X_t$ denotes controls including six lags of log(govt debt), log(industrial production), and log(stock price)
+\footnote{Identifying the government borrowing shock using twelve lags obtains similar result.}; and
+$\hat{\epsilon}_t^b$ is adopted as the identified borrowing shock. In the second stage, I estimate the following equation to generate the impulse response functions of SOFR and LIBOR to a standard deviation of government
+borrowing shock.
+\begin{align*}
+  r_{t+h}=\beta_0+\psi_h \hat{\epsilon}_t^b +\Gamma(L)Z_{t-1}+u_{t+h},
+\end{align*}
+where $r_{t+h}$ denotes SOFR or LIBOR spread at horizon h; $Z_{t-1}$ denotes controls including three lags of SOFR or LIBOR spread, log(govt debt), and log(industrial production).
+The IRFs are given in graphs below. Note that SOFR spread exhibits a positive and persistent response to government
+borrowing shock for as long as 12 horizons (months) after the shock happens. A simple numerical analysis reveals that a 1-percentage increase in government debt outstanding, which is equivalent to a
+0.75-percentage change in GDP \footnote{In dollar value, this is roughly 146 billion.}, results in a 0.8-percentage rise in SOFR right after the borrowing shock. 
+This effect remains positive within the following 12 months and peaks at 3.3-percentages in 8 months after the shock.
+On the other hand, LIBOR spread responds ambiguously. Two robustness checks are conducted. In the first alternative specification, I replace industrial production with unemployment rate as a measure of output,
+the resulting IRFs are very similar. Also, in order to exclude the possible effect from price level, CPI is employed as a control in the second alternative specification, and the results remain unchanged.
+\begin{center}
+  \includegraphics[scale=0.8]{../lp/results/irfs.png}
+\end{center}
+
+\newpage
+\section{Basic Model}
+\subsection{Main Features}
+In this section, I model two economies in which firms' borrowing cost is denoted using
+SOFR and LIBOR, respectively. The SOFR economy is borrowed from Aiyagari and McGrattan (1998).
+The LIBOR economy differs from SOFR economy as banks play a role in providing business 
+loans to firms. Under both economies, households choose consumption and saving, while 
+providing labor inelastically.
+
+
+
+
+
+
+
+
+
+
 
 
 \end{document}
+

@@ -302,6 +302,39 @@ A considerable share of business loans will be indexed by SOFR because (1) there
 
 
 
+\begin{frame}
+  \frametitle{Local Projection}
+Two Steps:
+\begin{itemize}
+  \item Compute borrowing shocks
+  \begin{align*}
+    b_t=\alpha_0+\alpha_1t+\alpha_2t^2+A(L)X_{t-1}+\epsilon_t^b
+  \end{align*}
+  \begin{itemize}
+    \item $b_t$: log(govt debt)
+    \item $X_t$: controls including six lags of log(govt debt), log(industrial production), and log(stock price)
+    \item $\hat{\epsilon}_t^b$: identified borrowing shock
+  \end{itemize}
+  \item Estimate local projections
+  \begin{align*}
+    r_{t+h}=\beta_0+\psi_h \hat{\epsilon}_t^b +\Gamma(L)Z_{t-1}+u_{t+h}
+  \end{align*}
+    \begin{itemize}
+      \item $r_{t+h}$: SOFR or LIBOR spread at horizon h
+      \item $Z_{t-1}$: controls including three lags of SOFR or LIBOR spread, log(govt debt), and log(industrial production)
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{LP Results}
+  \begin{center}
+    IRFs of Government Borrowing Shock
+    \includegraphics[scale=0.5]{irfs.png}
+  \end{center}
+\end{frame}
+
 
 
 \end{document}

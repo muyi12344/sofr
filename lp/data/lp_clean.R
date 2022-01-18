@@ -163,7 +163,9 @@ end_data_noout=read.csv('lp_data_noout.csv')
 
 # Set Variables
 exog_data_debt=data.frame(log(shock_data[,c(3,4)]))
+# exog_data_debt=data.frame(log(shock_data[,c(3,4,10)])) -- Altrnative specification
 exog_data_KStst=data.frame(log(shock_data[,c(4,6)]))
+# exog_data_KStst=data.frame(log(shock_data[,c(4,6,10)])) -- Altrnative specification
 SOFR_spread=data.frame(SOFR_spread=end_data_noout$SOFR-end_data_noout$FFR)
 LIBOR_spread=data.frame(LIBOR_spread=end_data_noout$LIBOR-end_data_noout$FFR)
 debt_shock=data.frame(shock_data[,7])
@@ -172,12 +174,12 @@ KStsy_shock=data.frame(shock_data[,8])
 # Local Projection with IV
 SOFR_iv_debt <- lp_lin_iv(endog_data = SOFR_spread, lags_endog_lin = 3,
 shock = debt_shock, exog_data=exog_data_debt, lags_exog=3,
-trend = 0, confint = 1, hor = 12)
+trend = 0, confint = 1.64, hor = 12)
 plot_lin(SOFR_iv_debt)   
 
 LIBOR_iv_debt <- lp_lin_iv(endog_data = LIBOR_spread, lags_endog_lin = 3,
 shock = debt_shock, exog_data=exog_data_debt, lags_exog=3,
-trend = 0, confint = 1, hor = 12)
+trend = 0, confint = 1.64, hor = 12)
 plot_lin(LIBOR_iv_debt)   
 
 SOFR_iv_KStsy <- lp_lin_iv(endog_data = data.frame(SOFR_spread[-c(1:3),]), lags_endog_lin = 3,
@@ -189,6 +191,28 @@ LIBOR_iv_KStsy <- lp_lin_iv(endog_data = data.frame(LIBOR_spread[-c(1:3),]), lag
 shock = data.frame(KStsy_shock[-c(1:3),]), exog_data=data.frame(exog_data_KStst[-c(1:3),]), lags_exog=3,
 trend = 0, confint = 1, hor = 12)
 plot_lin(LIBOR_iv_KStsy)   
+
+# Save irfs
+png(file="../results/irfs.png")
+par(mfrow=c(2,1))    
+plot(c(1:12), type="n", ylim = c(-200, 400),
+  ylab = "SOFR spread", xlab = "")
+polygon(
+  c(1:12, rev(1:12)),
+  c(SOFR_iv_debt$irf_lin_up , rev( SOFR_iv_debt$irf_lin_low )), 
+  col = "grey80", border = NA)
+lines(c(1:12), SOFR_iv_debt$irf_lin_mean, type="l", col="red") 
+abline(h=0)
+plot(c(1:12), type="n", ylim = c(-60, 60),
+  ylab = "LIBOR spread", xlab = "")
+polygon(
+  c(1:12, rev(1:12)),
+  c(LIBOR_iv_debt$irf_lin_up , rev(LIBOR_iv_debt$irf_lin_low )), 
+  col = "grey80", border = NA)
+lines(c(1:12), LIBOR_iv_debt$irf_lin_mean, type="l", col="red") 
+abline(h=0)
+dev.off()
+
 
 
 
