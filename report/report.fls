@@ -313,12 +313,15 @@ INPUT /Users/mac/Desktop/Research/sofr/report/../lp/results/irfs.png
 INPUT /Users/mac/Desktop/Research/sofr/report/report.aux
 INPUT /Users/mac/Desktop/Research/sofr/report/report.out
 INPUT /Users/mac/Desktop/Research/sofr/report/report.out
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx12.pfb
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmex10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi12.pfb
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi6.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi8.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr12.pfb

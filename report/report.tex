@@ -156,8 +156,8 @@ borrowing shock.
 where $r_{t+h}$ denotes SOFR or LIBOR spread at horizon h; $Z_{t-1}$ denotes controls including three lags of SOFR or LIBOR spread, log(govt debt), and log(industrial production).
 The IRFs are given in graphs below. Note that SOFR spread exhibits a positive and persistent response to government
 borrowing shock for as long as 12 horizons (months) after the shock happens. A simple numerical analysis reveals that a 1-percentage increase in government debt outstanding, which is equivalent to a
-0.75-percentage change in GDP \footnote{In dollar value, this is roughly 146 billion.}, results in a 0.8-percentage rise in SOFR right after the borrowing shock. 
-This effect remains positive within the following 12 months and peaks at 3.3-percentages in 8 months after the shock.
+0.75-percentage change in GDP \footnote{In dollar value, this is roughly 146 billion.}, results in a 0.8-bps rise in SOFR right after the borrowing shock. 
+This effect remains positive within the following 12 months and peaks at 3.3-bps in 8 months after the shock.
 On the other hand, LIBOR spread responds ambiguously. Two robustness checks are conducted. In the first alternative specification, I replace industrial production with unemployment rate as a measure of output,
 the resulting IRFs are very similar. Also, in order to exclude the possible effect from price level, CPI is employed as a control in the second alternative specification, and the results remain unchanged.
 \begin{center}
@@ -166,20 +166,94 @@ the resulting IRFs are very similar. Also, in order to exclude the possible effe
 
 \newpage
 \section{Basic Model}
-\subsection{Main Features}
-In this section, I model two economies in which firms' borrowing cost is denoted using
-SOFR and LIBOR, respectively. The SOFR economy is borrowed from Aiyagari and McGrattan (1998).
-The LIBOR economy differs from SOFR economy as banks play a role in providing business 
-loans to firms. Under both economies, households choose consumption and saving, while 
-providing labor inelastically.
+The theoretical model is built based on Walque, Pierrard, and Rouabah (2010). Departing from a perfectly competitive credit market between households and firms, in this paper the direct borrowing between firms and households is not feasible and the capital must flow through an interbank lending market.
+Firms borrow uninsuredly from the merchant banks for business capital, and commercial banks are financed using insured interbank loans lent by deposit banks. For commercial banks to borrow on the interbank market, they must use government bonds as collateral. This creates an additional motivation
+for commercial banks to hold government bonds, besides the profit motivation. Firms and merchant banks are allowed to default, creating risk premiums on top of the risk free rate. 
 
 
+\subsection{Household's Problem}
+Households choose consumption $C_t$ and deposits $D_t$ to maximize their expected lifetime utility subject to flow budget constraint. I assume exogenous labor supply $N$ to simplify the analysis.
+Each period households receive wage payment $w_tN$, deposit payment $D_{t-1}$, and dividend payments $d^t_D$ from deposit banks, $d_t^C$ from commercial banks, and $d_t^F$ from firms.
+Finally, households have to pay a lump-sum tax $T_t$.
+\begin{align}
+  &\max_{\{c_t, D_t\}} E \sum_{t=0}^{\infty} \beta^t logC_t ,\\
+  s.t. \nonumber \\
+  &C_t+\frac{D_t}{1+r_t}+T_t=w_tN+D_{t-1}+d_t^D+d_t^C+d_t^F
+\end{align}
+The FOC is 
+\begin{align}
+  \frac{1}{C_t}&=\beta (1+r_t)E_t\big(  \frac{1}{C_{t+1}}\big)
+\end{align}
 
 
+\subsection{Deposit Bank's Problem}
+Deposit banks demand deposit from households, and they do collateralized lendings to commercial banks through the interbank lending market.
+Each period, deposit banks choose deposit demand $D_t$ and interbank lending supply $I_t$ to maximize profits.  Interbank lending requires
+collateral in the form of government bonds. For the part of lendings on which the merchant banks choose to default, the deposit banks will recover
+a fraction $\theta$ of the collateralized assets. Notice that I assume a quadratic payment adjustment cost to avoid corner solutions.
+\begin{align}
+  &\max_{\{D_t, I_t, d_t^D\}} E \sum_{t=0}^{\infty} \{M_t[d_t^D-(\frac{d_t^D-\bar{d}^D}{2})^2]\} ,\\
+  s.t. \nonumber \\
+  &d_t^D=\gamma_t^I I_{t-1}+\frac{D_t}{1+r_t}-D_{t-1}-\frac{I_t}{1+r_t^I}+ \theta(1-\gamma_{t-1}^I)I_{t-2}
+\end{align}
+The FOCs are 
+\begin{align}
+  \frac{M_t}{1+r_t}(1-\frac{d_t^D-\bar{d}^D}{2})&=E_t \big[M_{t+1}(1-\frac{d_{t+1}^D-\bar{d}^D}{2})\big], \\
+  \frac{M_t}{1+r_t^I}(1-\frac{d_t^D-\bar{d}^D}{2})&=E_t  \big[M_{t+1}\gamma_{t+1}^I (1-\frac{d_{t+1}^D-\bar{d}^D}{2})\big]
+\end{align}
 
 
+\subsection{Commercial Bank's Problem}
+Commercial banks demand insured borrowing from deposit banks with government bonds as the collateral. In the meantime, they issue uninsured business loans to firms to earn interests.
+Each period commercial banks choose interbank lending demands $I_t$, government bonds holding $B_t$, business loan supply $L_t$, and repayment rate $\gamma_t^I$ to maximize its profits. 
+I continue to assume a quadratic payment adjustment cost for commercial banks. To borrow on the interbank market, commercial banks must obey the collateral requirement, they cannot borrow
+more than the bonds they hold. What's more, to simplify the problem, I assume that commercial banks borrow at their limits. 
+Since the government bond is a risk-free asset, in this paper I do not apply a haircut on the collateral.
+In case of default, the commercial banks will lose a fraction $\theta$ of their collateral. Other pecuniary costs such as higher searching costs to obtain future loans is given by a quadratic function of the defaulted borrowing.
+\begin{align}
+  &\max_{\{I_t, B_t, L_t, \gamma_t^I, d_t^C\}} E \sum_{t=0}^{\infty} \{M_t[d_t^C-(\frac{d_t^C-\bar{d}^C}{2})^2]\} ,\\
+  s.t. \nonumber \\
+  &d_t^C=\gamma_t^L L_{t-1}+\frac{I_t}{1+r_t^I}-\gamma_t^I I_{t-1}-\frac{L_t}{1+r_t^L} \nonumber \\
+  & \hspace{3cm}-\theta(1-\gamma_{t-1}^I)I_{t-2}-\frac{\omega}{2}[(1-\gamma_{t-1}^I)I_{t-2}]^2+B_{t-1}-\frac{B_t}{1+r_t}, \\
+  &I_t= B_t 
+\end{align}
+The FOCs are 
+\begin{align}
+  M_t (1-\frac{d_t^C-\bar{d}^C}{2})(\frac{1}{1+r_t^I}-\frac{1}{1+r_t})& \nonumber \\
+  = E_t \bigg\{ M_{t+1} (1-\frac{d_{t+1}^C-\bar{d}^C}{2})&(\gamma_{t+1}^I-1)+ M_{t+2} (1-\frac{d_{t+2}^C-\bar{d}^C}{2}) [\omega(1-\gamma_{t+1}^I)^2B_t+\theta(1-\gamma_{t+1}^I)] \bigg\}, \\
+  \frac{M_t}{1+r_t^L}(1-\frac{d_t^C-\bar{d}^C}{2})=E_t \big[M_{t+1} \gamma_{t+1}^L &(1-\frac{d_{t+1}^C-\bar{d}^C}{2})\big], \\
+  M_t (1-\frac{d_t^C-\bar{d}^C}{2})(L_{t-1}-B_{t-1})=-& E_t \bigg\{ M_{t+1} (1 -\frac{d_{t+1}^C-\bar{d}^C}{2})[\omega(1-\gamma_t^I)B_{t-1}^2 + \theta B_{t-1}] \bigg\}
+\end{align}
 
 
+\subsection{Firm's Problem}
+Firms require uninsured business loans from commercial banks to finance the production. They can default on business loans with a penalty. Each period firms choose 
+labor demand $N_t$, business loan demand $L_t$, and repayment rate $\gamma_t^L$ to maximize profits. 
+\begin{align}
+  &\max_{\{N_t, L_t, \gamma_t^L, d_t^F, K_t\}} E \sum_{t=0}^{\infty} M_t\{[d_t^F-(\frac{d_t^F-\bar{d}^F}{2})^2]-\xi(1-\gamma_t^L)\} ,\\
+  s.t. \nonumber \\
+  &K_t=(1-\delta)K_{t-1}+\frac{L_t}{1+r_t^L}, \\
+  &d_t^F=F(K_t, N_t)-w_tN_t-\gamma_t^L L_{t-1}
+\end{align}
+The FOCs are 
+\begin{align}
+  F_N(K_t, N_t)=w_t&, \\
+  M_t (1-\frac{d_t^C-\bar{d}^C}{2})&F_K(K_t, N_t) \nonumber \\
+  = E_t \bigg\{ M_{t+2} &(1-\frac{d_{t+2}^C-\bar{d}^C}{2} )(1+r_{t+1}^L)\gamma_{t+2}^L
+  -(1-\delta)M_{t+1} (1 -\frac{d_{t+1}^C-\bar{d}^C}{2})(1+r_t^L)\gamma_{t+1}^L \bigg\}, \\
+  \xi = (1-\frac{d_t^C-\bar{d}^C}{2} &)L_{t-1}
+\end{align}
+
+
+\subsection{Government Budget Constraint}
+Government runs a balanced budget. Each period it pays back the government bonds issued at last period and consume goods. 
+To finance spending, the government will issue new bonds and levy lump sum tax on households.
+\begin{align}
+  G_t+(1+r_t)B_t=B_{t+1}+T_t
+\end{align}
+
+
+\subsection{General Equilibrium}
 
 
 
