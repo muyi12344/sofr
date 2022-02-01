@@ -1,0 +1,30 @@
+% Helper function to solve for dC, dF, L, gammaL, K in steady state
+% var: dC, dF, C, gammaL, K
+% para: N T G beta alpha theta omega xiC xiF delta sigma
+
+
+function F=ss_help_fun(var, N, T, G, beta, alpha, theta, omega, xiC, xiF, delta)
+B=xiC/(1-beta*theta);
+I=xiC/(1-beta*theta);
+D=xiC/(1-beta*theta);
+gammaI=(1-(T-G)*(1-beta*theta)/xiC+beta*(beta*theta-1))/(beta^2*theta);
+dD=((1-theta-beta)*gammaI+theta)*I+(beta-1)*D;
+
+% equation 2
+F(1)=(1-beta)*D+(1-alpha)*(var(5)/N)^alpha*N+dD+var(1)+var(2)-var(1)-T;
+% equation 9
+F(2)=(1-beta)*var(3)*var(4)+(beta-1)*I*gammaI-(1-gammaI)*(theta*I+xiC)+(1-beta*(gammaI-(1-gammaI)*(beta*theta-1)))*B-var(1);
+% equation 18
+F(3)=(1+1/(beta*var(4))-1)*var(4)*(beta-(1-delta)*beta^2)-alpha*(var(5)/N)^(alpha-1);
+% equation 15
+F(4)=beta*var(4)*var(3)-delta*var(5);
+% equation 16
+F(5)=var(5)^alpha*N^(1-alpha)-(1-alpha)*(var(5)/N)^alpha*N-(xiF+delta*var(5)*(var(3)-xiF)/(beta*var(3)))-var(2);
+
+
+
+
+
+
+
+

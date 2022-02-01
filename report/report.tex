@@ -165,7 +165,7 @@ the resulting IRFs are very similar. Also, in order to exclude the possible effe
 \end{center}
 
 \newpage
-\section{Basic Model}
+\section{Model}
 The theoretical model is built based on Walque, Pierrard, and Rouabah (2010). Departing from a perfectly competitive credit market between households and firms, in this paper the direct borrowing between firms and households is not feasible and the capital must flow through an interbank lending market.
 Firms borrow uninsuredly from the merchant banks for business capital, and commercial banks are financed using insured interbank loans lent by deposit banks. For commercial banks to borrow on the interbank market, they must use government bonds as collateral. This creates an additional motivation
 for commercial banks to hold government bonds, besides the profit motivation. Firms and merchant banks are allowed to default, creating risk premiums on top of the risk free rate. 
@@ -194,11 +194,11 @@ a fraction $\theta$ of the collateralized assets. Notice that I assume a quadrat
 \begin{align}
   &\max_{\{D_t, I_t, d_t^D\}} E \sum_{t=0}^{\infty} \{M_t[d_t^D-(\frac{d_t^D-\bar{d}^D}{2})^2]\} ,\\
   s.t. \nonumber \\
-  &d_t^D=\gamma_t^I I_{t-1}+\frac{D_t}{1+r_t}-D_{t-1}-\frac{I_t}{1+r_t^I}+ \theta(1-\gamma_{t-1}^I)I_{t-2}
+  &d_t^D=\gamma_t^I I_{t-1}+\frac{D_t}{1+r_t}-D_{t-1}-\frac{I_t}{1+r_t^I}+ \theta(1-\gamma_{t-1}^I)I_{t-2},\\
+  &I_t=D_t
 \end{align}
-The FOCs are 
+The FOC is 
 \begin{align}
-  \frac{M_t}{1+r_t}(1-\frac{d_t^D-\bar{d}^D}{2})&=E_t \big[M_{t+1}(1-\frac{d_{t+1}^D-\bar{d}^D}{2})\big], \\
   \frac{M_t}{1+r_t^I}(1-\frac{d_t^D-\bar{d}^D}{2})&=E_t  \big[M_{t+1}\gamma_{t+1}^I (1-\frac{d_{t+1}^D-\bar{d}^D}{2})\big]
 \end{align}
 
@@ -214,15 +214,15 @@ In case of default, the commercial banks will lose a fraction $\theta$ of their 
   &\max_{\{I_t, B_t, L_t, \gamma_t^I, d_t^C\}} E \sum_{t=0}^{\infty} \{M_t[d_t^C-(\frac{d_t^C-\bar{d}^C}{2})^2]\} ,\\
   s.t. \nonumber \\
   &d_t^C=\gamma_t^L L_{t-1}+\frac{I_t}{1+r_t^I}-\gamma_t^I I_{t-1}-\frac{L_t}{1+r_t^L} \nonumber \\
-  & \hspace{3cm}-\theta(1-\gamma_{t-1}^I)I_{t-2}-\frac{\omega}{2}[(1-\gamma_{t-1}^I)I_{t-2}]^2+B_{t-1}-\frac{B_t}{1+r_t}, \\
+  & \hspace{3cm}-\theta(1-\gamma_{t-1}^I)I_{t-2}-\xi_C(1-\gamma_t^I)+B_{t-1}-\frac{B_t}{1+r_t^B}, \\
   &I_t= B_t 
 \end{align}
 The FOCs are 
 \begin{align}
-  M_t (1-\frac{d_t^C-\bar{d}^C}{2})(\frac{1}{1+r_t^I}-\frac{1}{1+r_t})& \nonumber \\
-  = E_t \bigg\{ M_{t+1} (1-\frac{d_{t+1}^C-\bar{d}^C}{2})&(\gamma_{t+1}^I-1)+ M_{t+2} (1-\frac{d_{t+2}^C-\bar{d}^C}{2}) [\omega(1-\gamma_{t+1}^I)^2B_t+\theta(1-\gamma_{t+1}^I)] \bigg\}, \\
-  \frac{M_t}{1+r_t^L}(1-\frac{d_t^C-\bar{d}^C}{2})=E_t \big[M_{t+1} \gamma_{t+1}^L &(1-\frac{d_{t+1}^C-\bar{d}^C}{2})\big], \\
-  M_t (1-\frac{d_t^C-\bar{d}^C}{2})(L_{t-1}-B_{t-1})=-& E_t \bigg\{ M_{t+1} (1 -\frac{d_{t+1}^C-\bar{d}^C}{2})[\omega(1-\gamma_t^I)B_{t-1}^2 + \theta B_{t-1}] \bigg\}
+  &M_t (1-\frac{d_t^C-\bar{d}^C}{2})(\frac{1}{1+r_t^I}-\frac{1}{1+r_t^B}) \nonumber \\
+  & \hspace{5mm} = E_t \bigg\{ M_{t+1} (1-\frac{d_{t+1}^C-\bar{d}^C}{2})(\gamma_{t+1}^I-1)+ M_{t+2} (1-\frac{d_{t+2}^C-\bar{d}^C}{2}) [\theta(1-\gamma_{t+1}^I)] \bigg\}, \\
+  &\frac{M_t}{1+r_t^L}(1-\frac{d_t^C-\bar{d}^C}{2})=E_t \big[M_{t+1} \gamma_{t+1}^L (1-\frac{d_{t+1}^C-\bar{d}^C}{2})\big], \\
+  &M_t (1-\frac{d_t^C-\bar{d}^C}{2})(B_{t-1}-\xi_C)=E_t \bigg\{ M_{t+1} (1 -\frac{d_{t+1}^C-\bar{d}^C}{2})(\theta B_{t-1}) \bigg\}
 \end{align}
 
 
@@ -230,18 +230,18 @@ The FOCs are
 Firms require uninsured business loans from commercial banks to finance the production. They can default on business loans with a penalty. Each period firms choose 
 labor demand $N_t$, business loan demand $L_t$, and repayment rate $\gamma_t^L$ to maximize profits. 
 \begin{align}
-  &\max_{\{N_t, L_t, \gamma_t^L, d_t^F, K_t\}} E \sum_{t=0}^{\infty} M_t\{[d_t^F-(\frac{d_t^F-\bar{d}^F}{2})^2]-\xi(1-\gamma_t^L)\} ,\\
+  &\max_{\{N_t, L_t, \gamma_t^L, d_t^F, K_t\}} E \sum_{t=0}^{\infty} \{ M_t[d_t^F-(\frac{d_t^F-\bar{d}^F}{2})^2]\} ,\\
   s.t. \nonumber \\
   &K_t=(1-\delta)K_{t-1}+\frac{L_t}{1+r_t^L}, \\
-  &d_t^F=F(K_t, N_t)-w_tN_t-\gamma_t^L L_{t-1}
+  &d_t^F=F(K_t, N_t)-w_tN_t-\gamma_t^L L_{t-1}-\xi_F(1-\gamma_t^L)
 \end{align}
 The FOCs are 
 \begin{align}
-  F_N(K_t, N_t)=w_t&, \\
-  M_t (1-\frac{d_t^C-\bar{d}^C}{2})&F_K(K_t, N_t) \nonumber \\
-  = E_t \bigg\{ M_{t+2} &(1-\frac{d_{t+2}^C-\bar{d}^C}{2} )(1+r_{t+1}^L)\gamma_{t+2}^L
-  -(1-\delta)M_{t+1} (1 -\frac{d_{t+1}^C-\bar{d}^C}{2})(1+r_t^L)\gamma_{t+1}^L \bigg\}, \\
-  \xi = (1-\frac{d_t^C-\bar{d}^C}{2} &)L_{t-1}
+  &F_N(K_t, N_t)=w_t, \\
+  &M_t (1-\frac{d_t^F-\bar{d}^F}{2})F_K(K_t, N_t) \nonumber \\
+  &\hspace{5mm} = E_t \bigg\{ M_{t+1} (1-\frac{d_{t+1}^F-\bar{d}^F}{2} )(1+r_t^L)\gamma_{t+1}^L
+  -(1-\delta)M_{t+2} (1 -\frac{d_{t+2}^F-\bar{d}^F}{2})(1+r_{t+1}^L)\gamma_{t+2}^L \bigg\}, \\
+  &\xi_F = L_{t-1}
 \end{align}
 
 
@@ -249,11 +249,44 @@ The FOCs are
 Government runs a balanced budget. Each period it pays back the government bonds issued at last period and consume goods. 
 To finance spending, the government will issue new bonds and levy lump sum tax on households.
 \begin{align}
-  G_t+(1+r_t)B_t=B_{t+1}+T_t
+  G_t+B_{t-1}=\frac{B_t}{1+r_t^B}+T_t
 \end{align}
 
 
 \subsection{General Equilibrium}
+To simplify the analysis, I assume that lump-sum tax $T_t$ is fixed at $T$. The government spending is given exogenously as
+\begin{align}
+  G_t=\rho G_{t-1}+\sigma_t.
+\end{align}
+The general equilibrium is characterized as follows:\\
+Allocation paths $\{C_t, D_t, I_t, B_t, d_t^D, L_t, \gamma_t^I, d_t^C, \gamma_t^L, d_t^F, K_t\}$, price paths $\{ r_t, r_t^I, r_t^L, r_t^B, w_t\}$, and
+government policies $\{G_t, B_t\}$ such that \\
+(1) First order conditions and budget constraints satisfy;\\
+(2) Labor market, deposit market, interbanking lending market, and business loan market all clear;\\
+(3) Government budget constraint satisfies;
+
+
+\section{Steady State}
+The steady state version of this general equilibrium model is given by the following 16 equations.
+\begin{align}
+  &r=1/\beta-1, \\
+  &B=\xi_C/(1-\beta \theta), \\
+  &I=B,\\
+  &\gamma^I=\frac{1-(T-G)(1-\beta \theta)/ \xi_C+\beta (\beta \theta-1)}{\beta^2 \theta},\\
+  &r^I=1/(\beta \gamma^I)-1,\\
+  &r^B=\frac{1}{\beta[1-\beta \theta(1-\gamma^I)]}-1,\\
+  &D=I,\\
+  &d^D=[(1-\theta-\beta)\gamma^I+\theta]I+(\beta-1)D,\\
+  &L=\xi_F,\\
+  &K=\bigg(\frac{1-(1-\delta) \beta} {\alpha}\bigg)^{1/(\alpha-1)}N,\\
+  &\gamma^L=\delta K/(\beta L),\\
+  &r^L=1/(\beta \gamma ^L)-1, \\
+  &w=(1-\alpha)(K/N)^{\alpha},\\
+  &d^C=\gamma^L L+(\beta-1)\gamma^I I-L\beta \gamma^L-\theta (1-\gamma^I)I-\xi_C(1-\gamma^I)+B-B/(1+r^B),\\
+  &d^F=K^{\alpha}N^{1-\alpha}-wN-\gamma^L L-\xi_F(1-\gamma^L),\\
+  &C=(1-\beta)D+wN+d^D+d^C+d^F-T.
+\end{align}
+
 
 
 
