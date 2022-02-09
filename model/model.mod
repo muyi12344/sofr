@@ -1,19 +1,17 @@
 var r rI rL rB dD dC dF I B L K w C gammaI gammaL D;
 
-parameters N T G beta alpha theta omega xiC xiF delta sigma;
+parameters G N T beta alpha theta xiC xiF delta;
 
 //initialization of parameters
-N=0.73;
-T=0.23;
 G=0.2;
+N=0.7;
+T=0.23;
 beta=0.9963;
-alpha=0.3;
+alpha=0.33;
 theta=0.8;
-omega=300;
 xiC=0.1;
 xiF=0.15;
 delta=0.9;
-sigma=0.01;
 
 
 
@@ -55,6 +53,7 @@ end;
 
 
 
+
 initval;
 
 r=0.03;
@@ -79,6 +78,7 @@ end;
 
 steady_state_model;
 
+G=0.2;
 r=1/beta-1;
 B=xiC/(1-beta*theta);
 I=B;
@@ -110,8 +110,7 @@ end;
 
 
 steady(maxit=10000);
-
-
-
+check;
+model_diagnostics;
 
 

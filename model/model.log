@@ -16,18 +16,43 @@ STEADY-STATE RESULTS:
 
 r                 		 0.00371374
 rI                		 0.0816078
-rL                		 0.0974448
+rL                		 0.0650213
 rB                		 0.0648357
 dD                		 0.0282554
-dC                		 -0.00677248
-dF                		 -0.0132627
+dC                		 -0.00675703
+dF                		 -0.00909984
 I                 		 0.492708
 B                 		 0.492708
 L                 		 0.15
-K                 		 0.151868
-w                 		 0.43706
-C                 		 0.099097
+K                 		 0.156491
+w                 		 0.408671
+C                 		 0.0702915
 gammaI            		 0.927983
-gammaL            		 0.914592
+gammaL            		 0.942435
 D                 		 0.492708
-Total computing time : 0h00m00s
+
+EIGENVALUES:
+         Modulus             Real        Imaginary
+
+               0                0                0
+       3.793e-14        3.793e-14                0
+       9.826e-09        9.826e-09                0
+       9.826e-09       -9.826e-09                0
+       4.468e-08        4.468e-08                0
+       4.468e-08       -4.468e-08                0
+         0.01005          0.01005                0
+            0.44             0.44                0
+           1.276            1.276                0
+       1.537e+13        1.537e+13                0
+       1.188e+16       -1.188e+16                0
+       3.072e+18       -3.072e+18                0
+             Inf              Inf                0
+
+
+There are 5 eigenvalue(s) larger than 1 in modulus 
+for 6 forward-looking variable(s)
+
+The rank condition ISN'T verified!
+
+MODEL_DIAGNOSTICS:  No obvious problems with this mod-file were detected.
+Total computing time : 0h00m01s

@@ -1,0 +1,40 @@
+Starting Dynare (version 5.0).
+Calling Dynare with arguments: none
+Starting preprocessing of the model file ...
+Substitution of endo leads >= 2: added 1 auxiliary variables and equations.
+Substitution of endo lags >= 2: added 1 auxiliary variables and equations.
+Found 10 equation(s).
+Evaluating expressions...done
+Computing static model derivatives (order 1).
+Computing dynamic model derivatives (order 2).
+Processing outputs ...
+done
+Preprocessing completed.
+
+
+STEADY-STATE RESULTS:
+
+rI               		 0.0957824
+rB               		 0.00322576
+dD               		 0.303025
+dC               		 0.124872
+I                		 15.5502
+B                		 15.5502
+C                		 0.677897
+G                		 0.2
+
+EIGENVALUES:
+         Modulus             Real        Imaginary
+
+       1.391e-14        1.391e-14                0
+         0.01116          0.01116                0
+           1.028            1.028                0
+       9.145e+07        9.145e+07                0
+       9.145e+07       -9.145e+07                0
+
+
+There are 3 eigenvalue(s) larger than 1 in modulus 
+for 2 forward-looking variable(s)
+
+The rank condition ISN'T verified!
+

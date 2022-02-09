@@ -24,7 +24,7 @@ T = model.dynamic_resid_tt(T, y, x, params, steady_state, it_);
 
 T(8) = (-1)/((1+y(9))*(1+y(9)));
 T(9) = (-((-1)/((1+y(11))*(1+y(11)))));
-T(10) = 1/params(1);
+T(10) = 1/params(2);
 T(11) = T(10)*getPowerDeriv(T(5),params(5)-1,1);
 T(12) = (-1)/(y(20)*y(20));
 T(13) = (-params(4))/(y(28)*y(28));

@@ -24,8 +24,8 @@ T(1) = 1/y(20);
 T(2) = params(4)/y(28);
 T(3) = 1/(1+y(9))-1/(1+y(11));
 T(4) = params(4)^2;
-T(5) = y(18)/params(1);
+T(5) = y(18)/params(2);
 T(6) = T(5)^(params(5)-1);
-T(7) = params(1)^(1-params(5));
+T(7) = params(2)^(1-params(5));
 
 end

@@ -10,7 +10,6 @@ addpath('/Applications/Dynare/5.0/matlab');
 
 %% Steady State
 
-dynare model
-
+fun=@(I)findI(I, beta, gammaI, thetaD, thetaC, lambdaD, lambdaC);
 
 
