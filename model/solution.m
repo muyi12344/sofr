@@ -8,8 +8,8 @@ clc;
 cd '/Users/mac/Desktop//Research/sofr/model';
 addpath('/Applications/Dynare/5.0/matlab');
 
-%% Steady State
+%% Calibation
+dynare test2
 
-fun=@(I)findI(I, beta, gammaI, thetaD, thetaC, lambdaD, lambdaC);
 
 

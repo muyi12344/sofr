@@ -18,11 +18,12 @@ function T = dynamic_g2_tt(T, y, x, params, steady_state, it_)
 %   T           [#temp variables by 1]       double  vector of temporary terms
 %
 
-assert(length(T) >= 13);
+assert(length(T) >= 19);
 
 T = test.dynamic_g1_tt(T, y, x, params, steady_state, it_);
 
-T(12) = (-((-y(8))*(1+y(4)+1+y(4))))/((1+y(4))*(1+y(4))*(1+y(4))*(1+y(4)));
-T(13) = (-((-y(9))*(1+y(5)+1+y(5))))/((1+y(5))*(1+y(5))*(1+y(5))*(1+y(5)));
+T(17) = (-((-params(2))*(y(18)+y(18))))/(y(18)*y(18)*y(18)*y(18));
+T(18) = (-((-y(11))*(1+y(5)+1+y(5))))/((1+y(5))*(1+y(5))*(1+y(5))*(1+y(5)));
+T(19) = (-((-y(13))*(1+y(6)+1+y(6))))/((1+y(6))*(1+y(6))*(1+y(6))*(1+y(6)));
 
 end

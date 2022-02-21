@@ -6,5 +6,4 @@ function y = set_auxiliary_variables(y, x, params)
 %           from model file (.mod)
 
 y(14)=y(11);
-y(15)=y(7);
 end

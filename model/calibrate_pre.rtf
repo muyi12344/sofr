@@ -1,0 +1,31 @@
+ % update calibrate code\
+cp /N/u/qwu2/Carbonate/Documents/sofr/model/calibrate.m /N/slate/qwu2/sofr/model/calibrate.m
+cp /N/u/qwu2/Carbonate/Documents/sofr/model/test2.mod /N/slate/qwu2/sofr/model/test2.mod
+% update slurm script\
+cp /N/u/qwu2/Carbonate/Documents/sofr/model/calibrate_sub.slurm /N/slate/qwu2/sofr/model/calibrate_sub.slurm\
+\
+% update soft folder\
+cp -r /N/u/qwu2/Carbonate/Documents/sofr /N/slate/qwu2/sofr\
+\
+% rm results from last run\
+rm *.err\
+rm *.txt\
+rm -r cali_result\
+mkdir cali_result\
+\
+% interactive job\
+srun -p general --pty bash\
+module load matlab\
+module load dynare\
+matab\
+calibrate\
+\
+% batch job\
+sbatch calibrate_sub.slurm\
+\
+% sync results\
+cp -r /N/slate/qwu2/sofr/model/cali_result /N/u/qwu2/Carbonate/Documents/sofr/model/\
+\
+\
+\
+}

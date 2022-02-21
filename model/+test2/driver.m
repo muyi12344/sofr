@@ -4,6 +4,12 @@
 % Warning : this file is generated automatically by Dynare
 %           from model file (.mod)
 
+if isoctave || matlab_ver_less_than('8.6')
+    clear all
+else
+    clearvars -global
+    clear_persistent_variables(fileparts(which('dynare')), false)
+end
 tic0 = tic;
 % Define global variables.
 global M_ options_ oo_ estim_params_ bayestopt_ dataset_ dataset_info estimation_info ys0_ ex0_
@@ -25,9 +31,9 @@ M_.exo_names_long(1) = {'ea'};
 M_.exo_names(2) = {'eg'};
 M_.exo_names_tex(2) = {'eg'};
 M_.exo_names_long(2) = {'eg'};
-M_.endo_names = cell(15,1);
-M_.endo_names_tex = cell(15,1);
-M_.endo_names_long = cell(15,1);
+M_.endo_names = cell(14,1);
+M_.endo_names_tex = cell(14,1);
+M_.endo_names_long = cell(14,1);
 M_.endo_names(1) = {'rI'};
 M_.endo_names_tex(1) = {'rI'};
 M_.endo_names_long(1) = {'rI'};
@@ -67,12 +73,9 @@ M_.endo_names_long(12) = {'A'};
 M_.endo_names(13) = {'G'};
 M_.endo_names_tex(13) = {'G'};
 M_.endo_names_long(13) = {'G'};
-M_.endo_names(14) = {'AUX_ENDO_LEAD_20'};
-M_.endo_names_tex(14) = {'AUX\_ENDO\_LEAD\_20'};
-M_.endo_names_long(14) = {'AUX_ENDO_LEAD_20'};
-M_.endo_names(15) = {'AUX_ENDO_LAG_6_1'};
-M_.endo_names_tex(15) = {'AUX\_ENDO\_LAG\_6\_1'};
-M_.endo_names_long(15) = {'AUX_ENDO_LAG_6_1'};
+M_.endo_names(14) = {'AUX_ENDO_LEAD_99'};
+M_.endo_names_tex(14) = {'AUX\_ENDO\_LEAD\_99'};
+M_.endo_names_long(14) = {'AUX_ENDO_LEAD_99'};
 M_.endo_partitions = struct();
 M_.param_names = cell(15,1);
 M_.param_names_tex = cell(15,1);
@@ -125,17 +128,12 @@ M_.param_names_long(15) = {'Gbar'};
 M_.param_partitions = struct();
 M_.exo_det_nbr = 0;
 M_.exo_nbr = 2;
-M_.endo_nbr = 15;
+M_.endo_nbr = 14;
 M_.param_nbr = 15;
 M_.orig_endo_nbr = 13;
 M_.aux_vars(1).endo_index = 14;
 M_.aux_vars(1).type = 0;
 M_.aux_vars(1).orig_expr = 'C(1)';
-M_.aux_vars(2).endo_index = 15;
-M_.aux_vars(2).type = 1;
-M_.aux_vars(2).orig_index = 7;
-M_.aux_vars(2).orig_lead_lag = -1;
-M_.aux_vars(2).orig_expr = 'I(-1)';
 M_ = setup_solvers(M_);
 M_.Sigma_e = zeros(2, 2);
 M_.Correlation_matrix = eye(2, 2);
@@ -153,44 +151,43 @@ options_.use_dll = false;
 M_.nonzero_hessian_eqs = [1 2 3 5 7 8 9 11];
 M_.hessian_eq_zero = isempty(M_.nonzero_hessian_eqs);
 M_.orig_eq_nbr = 13;
-M_.eq_nbr = 15;
+M_.eq_nbr = 14;
 M_.ramsey_eq_nbr = 0;
 M_.set_auxiliary_variables = exist(['./+' M_.fname '/set_auxiliary_variables.m'], 'file') == 2;
 M_.epilogue_names = {};
 M_.epilogue_var_list_ = {};
-M_.orig_maximum_endo_lag = 2;
+M_.orig_maximum_endo_lag = 1;
 M_.orig_maximum_endo_lead = 2;
 M_.orig_maximum_exo_lag = 0;
 M_.orig_maximum_exo_lead = 0;
 M_.orig_maximum_exo_det_lag = 0;
 M_.orig_maximum_exo_det_lead = 0;
-M_.orig_maximum_lag = 2;
+M_.orig_maximum_lag = 1;
 M_.orig_maximum_lead = 2;
-M_.orig_maximum_lag_with_diffs_expanded = 2;
+M_.orig_maximum_lag_with_diffs_expanded = 1;
 M_.lead_lag_incidence = [
- 0 6 0;
- 0 7 21;
+ 0 5 0;
+ 0 6 19;
+ 0 7 0;
  0 8 0;
  0 9 0;
  0 10 0;
- 0 11 0;
- 1 12 0;
- 2 13 0;
- 3 14 0;
- 4 15 0;
- 0 16 22;
+ 1 11 0;
+ 2 12 0;
+ 3 13 0;
+ 4 14 0;
+ 0 15 20;
+ 0 16 0;
  0 17 0;
- 0 18 0;
- 0 19 23;
- 5 20 0;]';
+ 0 18 21;]';
 M_.nstatic = 7;
 M_.nfwrd   = 3;
-M_.npred   = 5;
+M_.npred   = 4;
 M_.nboth   = 0;
 M_.nsfwrd   = 3;
-M_.nspred   = 5;
-M_.ndynamic   = 8;
-M_.dynamic_tmp_nbr = [9; 8; 4; 0; ];
+M_.nspred   = 4;
+M_.ndynamic   = 7;
+M_.dynamic_tmp_nbr = [9; 7; 4; 0; ];
 M_.model_local_variables_dynamic_tt_idxs = {
 };
 M_.equations_tags = {
@@ -225,51 +222,51 @@ M_.mapping.ea.eqidx = [13 ];
 M_.mapping.eg.eqidx = [12 ];
 M_.static_and_dynamic_models_differ = false;
 M_.has_external_function = false;
-M_.state_var = [7 8 9 10 15 ];
+M_.state_var = [7 8 9 10 ];
 M_.exo_names_orig_ord = [1:2];
 M_.maximum_lag = 1;
 M_.maximum_lead = 1;
 M_.maximum_endo_lag = 1;
 M_.maximum_endo_lead = 1;
-oo_.steady_state = zeros(15, 1);
+oo_.steady_state = zeros(14, 1);
 M_.maximum_exo_lag = 0;
 M_.maximum_exo_lead = 0;
 oo_.exo_steady_state = zeros(2, 1);
 M_.params = NaN(15, 1);
-M_.endo_trends = struct('deflator', cell(15, 1), 'log_deflator', cell(15, 1), 'growth_factor', cell(15, 1), 'log_growth_factor', cell(15, 1));
-M_.NNZDerivatives = [62; 58; -1; ];
+M_.endo_trends = struct('deflator', cell(14, 1), 'log_deflator', cell(14, 1), 'growth_factor', cell(14, 1), 'log_growth_factor', cell(14, 1));
+M_.NNZDerivatives = [56; 56; -1; ];
 M_.static_tmp_nbr = [9; 0; 0; 0; ];
 M_.model_local_variables_static_tt_idxs = {
 };
 M_.params(2) = 0;
 D = M_.params(2);
-M_.params(1) = 0.2052;
+M_.params(1) = 1.0002;
 T = M_.params(1);
-M_.params(3) = 0.9963;
+M_.params(3) = 0.997;
 beta = M_.params(3);
 M_.params(4) = 0.4;
 alpha = M_.params(4);
-M_.params(5) = 1;
+M_.params(5) = 2;
 phi = M_.params(5);
 M_.params(6) = 0.009;
 omega = M_.params(6);
 M_.params(7) = 0.6;
 thetaD = M_.params(7);
-M_.params(9) = 0.6666666666666666;
+M_.params(9) = 1;
 lambdaD = M_.params(9);
 M_.params(8) = 0.5;
 thetaC = M_.params(8);
-M_.params(10) = 1;
+M_.params(10) = 2;
 lambdaC = M_.params(10);
 M_.params(11) = 0.2;
 xiC = M_.params(11);
-M_.params(12) = 0.005;
+M_.params(12) = 0.03;
 delta = M_.params(12);
 M_.params(13) = 0.99;
 gammaI = M_.params(13);
 M_.params(14) = 1;
 Abar = M_.params(14);
-M_.params(15) = 0.2;
+M_.params(15) = 1;
 Gbar = M_.params(15);
 %
 % INITVAL instructions
@@ -287,7 +284,6 @@ oo_.steady_state(9) = 2.946;
 oo_.steady_state(10) = 579;
 oo_.steady_state(11) = 9.6488;
 oo_.steady_state(14)=oo_.steady_state(11);
-oo_.steady_state(15)=oo_.steady_state(7);
 if M_.exo_nbr > 0
 	oo_.exo_simul = ones(M_.maximum_lag,1)*oo_.exo_steady_state';
 end

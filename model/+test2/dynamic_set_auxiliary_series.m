@@ -5,6 +5,5 @@ function ds = dynamic_set_auxiliary_series(ds, params)
 % Warning : this file is generated automatically by Dynare
 %           from model file (.mod)
 
-ds.AUX_ENDO_LEAD_20=ds.C(1);
-ds.AUX_ENDO_LAG_6_1=ds.I(-1);
+ds.AUX_ENDO_LEAD_99=ds.C(1);
 end
